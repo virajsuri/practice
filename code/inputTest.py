@@ -1,1 +1,0 @@
-print(input("type name: "))
