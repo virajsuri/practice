@@ -3,10 +3,12 @@ import matplotlib.pyplot as plt
 
 #show plot graph with one security and one FLD
 def plotGraph(outputTable):
-    print(outputTable)
-    plt.plot(outputTable, color='green',linestyle='solid')
-    plt.title(outputTable.columns[0]) 
+    print("Plotting graph")
+    plt.figure(figsize=(10,4))
+    plt.plot(outputTable, color='black',linestyle='solid')
+    plt.title(outputTable.columns[0])
     plt.tight_layout()
+    plt.savefig(outputTable.columns[0]+".jpg", dpi=300)
     plt.show()
 
 
