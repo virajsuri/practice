@@ -5,7 +5,6 @@ import scipy.stats as si
 from sympy.stats import Normal, cdf
 
 import matplotlib.pyplot as plt
-import numpy as np
 from mpl_toolkits import mplot3d
 
 equity = ['MCD US Equity']
@@ -38,14 +37,16 @@ def euro_vanilla_call(S, K, T, r, sigma):
     
     return call
 
-strikeVals = []
-dateVals = []
-optionsPrice = []
 
-dollarsFromSpot = 50
-daysOfMaturity=100
 
 def printFrame(table):
+    strikeVals = []
+    dateVals = []
+    optionsPrice = []
+
+    dollarsFromSpot = 50
+    daysOfMaturity=100
+     
     for index in table:
         sigma = table[index][0]/100
         spotPrice = table[index][1]
@@ -71,10 +72,14 @@ def printFrame(table):
 
     x,y = np.meshgrid(payoffDF.columns.astype(float), payoffDF.index.astype(float))
     z = payoffDF.values
-    
     fig, ax = plt.subplots(subplot_kw=dict(projection='3d'))
-
     ax.plot_wireframe(x,y,z)
+    ax.set_ylabel("Strikes")
+    ax.set_xlabel("Days to Maturity")
+    ax.set_zlabel("Price of Option")
+
+    fig.suptitle(str(equity[0])+" Options Price")
+    fig.tight_layout()
     plt.show()
 
 outputTable = test_bdp(equity, roundingData)
