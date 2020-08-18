@@ -26,6 +26,7 @@ roundingDataBonds = pd.DataFrame([
                                  ['BLP_SPRD_TO_BENCH_ASK','{:,.1f}',1,'BBG Ask Sprd To Benchmark'],   
                                  ])
 
+#main BDH
 def bdh(securities, roundingData, histDate, today):
     try:
         pipeline = pybbg.Pybbg()

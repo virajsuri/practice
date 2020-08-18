@@ -10,6 +10,7 @@ def plotGraph(outputTable):
     plt.tight_layout()
     plt.savefig(outputTable.columns[0]+".jpg", dpi=300)
     plt.show()
+    print("Done")
 
 
 #print function for BDH reqs in the console
