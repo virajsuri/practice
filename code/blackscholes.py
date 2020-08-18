@@ -77,20 +77,5 @@ def printFrame(table):
     ax.plot_wireframe(x,y,z)
     plt.show()
 
-
-
-
-
-
-
-    # fig = plt.figure()
-    
-    # ax.plot3D(payoffDF)
-    # ax.set_xlabel("Dates to Maturity")
-    # ax.set_ylabel("Strike Price")
-    # ax.set_zlabel("Option Price")
-    
-            
 outputTable = test_bdp(equity, roundingData)
 printFrame(outputTable)
-
