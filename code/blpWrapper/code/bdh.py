@@ -1,6 +1,5 @@
 import pybbg
-import bdhPrintFrame
-import showGraph
+import functions
 import datetime
 import pandas as pd 
 from dateutil.relativedelta import relativedelta
@@ -33,4 +32,4 @@ histDate = today + datetime.timedelta(days=-30)
 
 outputTable = bdh(security, roundingDataEquities[0], histDate, today)
 # print(outputTable)
-bdhPrintFrame.printFrame(security, outputTable, roundingDataEquities)
+functions.printFrame(security, outputTable, roundingDataEquities)

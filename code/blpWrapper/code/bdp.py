@@ -47,6 +47,6 @@ def getData(securities, roundingData):
     formattedOutputTable = printFrame(outputTable, roundingData)
     print(formattedOutputTable)
 
-getData(ustBonds, roundingDataUST)
-# getData(equityIndicies, roundingDataEquities)
+# getData(ustBonds, roundingDataUST)
+getData(equityIndicies, roundingDataEquities)
         

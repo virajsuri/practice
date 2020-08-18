@@ -1,5 +1,5 @@
 import pybbg
-import bdhPrintFrame
+import functions
 import datetime
 import pandas as pd 
 from dateutil.relativedelta import relativedelta
@@ -35,4 +35,6 @@ def mainMethod():
 
     outputTable = bdh_mixed(equity, roundingDataEquities, histDate, today, 'MONTHLY')
     # print(outputTable)
-    bdhPrintFrame.printFrame(equity, outputTable, roundingDataEquities)
+    functions.printFrame(equity, outputTable, roundingDataEquities)
+
+mainMethod()
