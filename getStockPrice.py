@@ -28,11 +28,10 @@ def plotGraph(outputTable, field):
     ax2.set_ylabel('Volume in millions')
 
     plt.tight_layout()
-    # plt.savefig(outputTable.columns[0]+".jpg", dpi=300)
     plt.show()
 
 
 field = 'Close'
-ticker = 'MSFT'
+ticker = '^GSPC'
 stockInfo = getStockPrice(ticker) 
 plotGraph(stockInfo, field)

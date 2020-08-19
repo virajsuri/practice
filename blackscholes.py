@@ -38,11 +38,9 @@ def euro_vanilla_call(S, K, T, r, sigma):
     return call
 
 
-
 def printFrame(table):
     strikeVals = []
     dateVals = []
-    optionsPrice = []
 
     dollarsFromSpot = 50
     daysOfMaturity=100
