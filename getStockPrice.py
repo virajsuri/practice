@@ -15,7 +15,8 @@ def getStockPrice(name):
 def plotGraph(outputTable, field):
     print("Plotting graph")
     fig, (ax1, ax2) = plt.subplots(2)
-    
+    # plt.xkcd()
+
     ax1.plot(outputTable[field], color='black',linestyle='solid')
     ax2.plot(outputTable['Volume'], color='red',linestyle='solid')
 
@@ -27,6 +28,7 @@ def plotGraph(outputTable, field):
 
     ax2.set_ylabel('Volume in millions')
 
+    
     plt.tight_layout()
     plt.show()
 

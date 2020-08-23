@@ -2,11 +2,10 @@ import pandas as pd
 import numpy as np
 import scipy.stats as si
 from sympy.stats import Normal, cdf
+import matplotlib.pyplot as plt
 
 
-callput = ""
-
-def euro_vanilla(S, K, T, r, sigma, option = callput):
+def euro_vanilla(S, K, T, r, sigma, option):
     
     #S: spot price
     #K: strike price
@@ -25,46 +24,46 @@ def euro_vanilla(S, K, T, r, sigma, option = callput):
     return result
 
 def printFrame(daysToMat):
-    strikeVals = []
-    optionsPrice = []
+    #single maturity, single strike price, different underlying prices
 
+    underlyingVals = []
     dollarsFromSpot = 50
-    daysOfMaturity=100
-     
     spotPrice = 210
     sigma = 2.7
-    # for index in table:
-    #     sigma = table[index][0]/100
-    #     spotPrice = table[index][1]
 
     #strikes
     for x in range(int(spotPrice-dollarsFromSpot), int(spotPrice+dollarsFromSpot)):
-        strikeVals.append(x)
+        underlyingVals.append(x)
     
-    payoffDF = pd.DataFrame(columns=[daysToMat], index=strikeVals)
-    # print(payoffDF)
+    payoffDF = []
 
+    for rows in range(len(underlyingVals)):
+        print(rows)
+        underlyingPrice = underlyingVals[rows]
+        
+        #if strike is less than spot 
 
-    for column in range(len(payoffDF)):
-        print(column)
-        print(payoffDF[column])
-        strikePrice = payoffDF.index[column]
-        # for rows in range(daysToMat):
-            # print(payoffDF.iloc[column][rows])
-
-            # if(strikePrice>spotPrice):
-            #     #call
-            #     price = euro_vanilla(spotPrice, strikePrice, rows, 0.0125, sigma, "call")
-            #     print(price)
-            #     payoffDF.iloc[column][rows] = price
-            # if(strikePrice<=spotPrice):
-            #     #put
-            #     price = euro_vanilla(spotPrice, strikePrice, rows, 0.0125, sigma, "put")
-            #     print(price)
-            #     payoffDF.iloc[column][rows] = price
+        if(240<underlyingPrice):
+            payoffDF.append(0)
+            continue
+            
+        else:
+            #call
+            price = euro_vanilla(underlyingPrice, 240, daysToMat, 0.0125, sigma, 'put')
+            print(str(spotPrice)+ " | "+str(underlyingPrice)+" | "+str(price)) 
+            payoffDF.append(price)
+        
 
     print(payoffDF)
-    print(len(payoffDF.columns))
+    plotGraph(payoffDF)
+ 
 
+def plotGraph(outputTable):
+    print("Plotting graph")
+    plt.figure(figsize=(10,4))
+    plt.plot(outputTable, color='black',linestyle='solid')
+    # plt.title(outputTable.columns[0])
+    plt.tight_layout()
+    plt.show()
 
-printFrame(30)
+printFrame(1)
