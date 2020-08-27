@@ -7,9 +7,6 @@ def getStockPrice(name):
 
     stock = yf.Ticker(name)
     closingPrice = stock.history(period="ytd")
-    # print(name)
-    # print(closingPrice['Close'])
-    # print(closingPrice['Close'][len(closingPrice)-1])
     return closingPrice
 
 def plotGraph(outputTable, field):
@@ -28,12 +25,11 @@ def plotGraph(outputTable, field):
 
     ax2.set_ylabel('Volume in millions')
 
-    
     plt.tight_layout()
     plt.show()
 
 
 field = 'Close'
-ticker = '^GSPC'
+ticker = 'CRM'
 stockInfo = getStockPrice(ticker) 
 plotGraph(stockInfo, field)
