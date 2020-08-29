@@ -1,0 +1,9 @@
+numpy==1.18.1
+scipy==1.4.1
+yfinance==0.1.54
+pandas==1.0.1
+fin_news==0.1.0
+pybbg==1.0.0
+sympy==1.5.1
+matplotlib==3.1.3
+finnews==1.1.0
