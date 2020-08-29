@@ -1,5 +1,4 @@
-import threading
-import time
+import threading, time
 
 def multiply(multiplicand, multiplier):
     count=1
@@ -14,5 +13,4 @@ try:
     x.start()
     y = threading.Thread(target=multiply, args=(10,2))
     y.start()
-except:
-    Exception,e: print str(e)
+except Exception as e: print(e)
