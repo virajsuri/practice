@@ -5,6 +5,11 @@ stock_ticker = 'AAPL'
 
 ticker = yf.Ticker(stock_ticker)
 
-pp = ticker.info
-print(pp)
+df = (ticker.info)
+print(type(df))
+for items in df:
+    print(df.itervalues())
+
+
+# print(ticker.options)
 # print(ticker.balance_sheet)
