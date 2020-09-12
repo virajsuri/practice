@@ -2,15 +2,26 @@ from pprint import pprint
 
 from finnews.client import News
 
-# Create a new instance of the News Client.
+# Start
 news_client = News()
 
-# Grab the Wall Street Journal News Client.
+#Wall Street Journal client start
 wsj_client = news_client.wsj
 
-# Grab the Market News Feed.
-content = wsj_client.us_business_news()
-# pprint(content)
+#WSJ Feeds
+wsj_bus = wsj_client.us_business_news()
+wsj_mkt = wsj_client.market_news()
 
-for elements in content:
-    pprint(elements['title'])
+
+# #SPGlobal client start
+# sp_global_client = news_client.sp_global
+
+# #SPGlobal Feeds
+# sp_indicies = sp_global_client.all_indicies()
+
+
+print(type(wsj_bus))
+for articles in wsj_bus:
+    print(articles['title'])
+    print(articles['link'])
+    print()
