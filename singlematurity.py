@@ -41,15 +41,15 @@ def printFrame(daysToMat):
         print(rows)
         underlyingPrice = underlyingVals[rows]
         
-        #if strike is less than spot 
-
-        if(240<underlyingPrice):
+        #if strike is greater than spot 
+        if(240>underlyingPrice):
             payoffDF.append(0)
             continue
             
         else:
             #call
             price = euro_vanilla(underlyingPrice, 240, daysToMat, 0.0125, sigma, 'put')
+            price = underlyingPrice-price
             print(str(spotPrice)+ " | "+str(underlyingPrice)+" | "+str(price)) 
             payoffDF.append(price)
         
