@@ -6,10 +6,12 @@ import csv
 import time
 
 url = "https://portal.rockgympro.com/portal/public/415a34a23151c6546419c1415d122b61/occupancy?&iframeid=occupancyCounter&fId=1038"
-page = requests.get(url)
-soup = BeautifulSoup(page.text, 'html.parser')
+
 
 while(True):
+    page = requests.get(url)
+    soup = BeautifulSoup(page.text, 'html.parser')
+    
     s = soup.find_all('script')
     right_now = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
     print(right_now)
