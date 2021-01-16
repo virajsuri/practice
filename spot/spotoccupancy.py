@@ -11,20 +11,26 @@ soup = BeautifulSoup(page.text, 'html.parser')
 
 while(True):
     s = soup.find_all('script')
-    now = datetime.now()
-    dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
-    print(dt_string)
+    right_now = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+    print(right_now)
 
     for x in s:
+
+        #If soup is for the Boulder gym
         if("BLD" in str(x)):
             array = (str(x).split("\n"))
             for units in array:
-                if("count" in units):
-                    print(int(re.search(r'\d+', units).group()))
 
+                #If on occupancy count line in soup
+                if("count" in units):
+                    current_occupancy = int(re.search(r'\d+', units).group())
+                    print(current_occupancy)
+
+                    #Append to CSV
                     with open('occupancy.csv', mode='a') as occupancy_file:
                         employee_writer = csv.writer(occupancy_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-                        employee_writer.writerow([int(re.search(r'\d+', units).group()), dt_string])
+                        employee_writer.writerow([current_occupancy, right_now])
+                    print()
                     break
 
     time.sleep(60)
